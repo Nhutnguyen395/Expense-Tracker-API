@@ -1,11 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const {createExpense, getExpense, updateExpense, deleteExpense} = require('../controllers/expenseController');
+import express from 'express';
+import {createExpense, getExpense, updateExpense, deleteExpense} from '../controllers/expenseController';
 /*
   authMiddleware checks for the client's ID (their JWT) before allowing them to create, get, update, or delete.
 */
-const authMiddleware = require('../middlewares/authMiddleware');
-
+import authMiddleware from '../middlewares/authMiddleware';
+const router = express.Router();
 /*
   When the request hits the endpoint '/', express does not call createExpense immediately but it calls the authMiddleware.
   It looks for the Authorization header in the request, its takes the JWT long string and uses jsonwebtoken and JWT_SECRETE
