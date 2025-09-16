@@ -1,8 +1,6 @@
-const express = require('express');
+import express from 'express';
+import {signup, login} from '../controllers/authController';
 const router = express.Router();
-// importing signup and login functions from controller file
-const {signup, login} = require('../controllers/authController');
-
 /*
   post request is used when the client wants to create something new on the server
   in this case we want to signup a new client. When a post request comes into 
