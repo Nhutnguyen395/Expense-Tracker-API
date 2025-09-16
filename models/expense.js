@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 /*
   The user type is a special data type for storing MongoDB's unique identifiers. 
@@ -12,4 +12,4 @@ const expenseSchema = new mongoose.Schema({
   description: {type: String}
 });
 
-module.exports = mongoose.model('Expense', expenseSchema);
+export default mongoose.model('Expense', expenseSchema);
