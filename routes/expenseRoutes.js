@@ -17,4 +17,4 @@ router.get('/', authMiddleware, getExpense);
 router.put('/:id', authMiddleware, updateExpense);
 router.delete('/:id', authMiddleware, deleteExpense);
 
-module.exports = router;
+export default router;
