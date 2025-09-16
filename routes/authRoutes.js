@@ -1,5 +1,5 @@
 import express from 'express';
-import {signup, login} from '../controllers/authController';
+import {signup, login} from '../controllers/authController.js';
 const router = express.Router();
 /*
   post request is used when the client wants to create something new on the server

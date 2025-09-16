@@ -3,8 +3,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
-import authRoutes from './routes/authoRoutes.js';
-import authController from './routes/authoController.js';
+import authRoutes from './routes/authRoutes.js';
+import expenseRoutes from './routes/expenseRoutes.js';
 
 const app = express();
 
@@ -17,10 +17,10 @@ app.use('/api/auth', authRoutes);
 app.use('/api/expense', expenseRoutes);
 
 // Database connection
-const MONGODB_URI = process.evn.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI;
 mongoose.connect(MONGODB_URI)
   .then(() => console.log('Connected to MongoDB'))
-  .catch(() => console.error('Could not connect to MongoDB'), err);
+  .catch(err => console.error('Could not connect to MongoDB', err));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

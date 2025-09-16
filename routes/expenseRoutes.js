@@ -1,9 +1,9 @@
 import express from 'express';
-import {createExpense, getExpense, updateExpense, deleteExpense} from '../controllers/expenseController';
+import {createExpense, getExpense, updateExpense, deleteExpense} from '../controllers/expenseController.js';
 /*
   authMiddleware checks for the client's ID (their JWT) before allowing them to create, get, update, or delete.
 */
-import authMiddleware from '../middlewares/authMiddleware';
+import authMiddleware from '../middlewares/authMiddleware.js';
 const router = express.Router();
 /*
   When the request hits the endpoint '/', express does not call createExpense immediately but it calls the authMiddleware.
