@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 
 // Create the user schema
 const userSchema = new mongoose.Schema({
@@ -37,4 +37,4 @@ userSchema.methods.comparePassword = async function(enteredPassword){
 };
 
 // compile userSchema into a user model and export so other files can acess it
-module.exports = mongoose.model('User', userSchema);
+export default mongoose.model('User', userSchema);
