@@ -28,11 +28,14 @@ export const login = async(req, res) => {
     const user = await User.findOne({username});
 
     // 3. Verify the user and their password
+    // if database returns nothing then user does not exists or password does not match
     if (!user || !(await user.comparePassword(password))) {
       return res.status(401).send({error: 'Invalid credentials'});
     }
 
     // 4. If credentials are valid, create JWT
+    // .sign takes 3 arguments - payload, secret key, and options
+    // we store the userid to know who they are in the future
     const token = jwt.sign(
       {userId: user.id},
       process.env.JWT_SECRET,
@@ -40,6 +43,7 @@ export const login = async(req, res) => {
     );
 
     // 5. Send the token back to the user
+    // The user is responsible for this token and sending it back with every future request to a protected endpoint.
     res.send({token});
   } catch (error){
     res.status(400).send({error: 'Error logging in'});
